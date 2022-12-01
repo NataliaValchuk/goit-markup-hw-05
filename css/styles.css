@@ -68,7 +68,6 @@ img {
 /*-----------header-----------*/
 
 .header {
-  padding: 25px;
   background: var(--light-color);
   border-bottom: 1px solid var(--silver-color);
 }
@@ -86,6 +85,7 @@ img {
   font-weight: 700;
   font-size: 26px;
   line-height: 1.19;
+  padding: 25px;
 
   letter-spacing: 0.03em;
 }
@@ -107,13 +107,28 @@ img {
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.02em;
-
   color: var(--secondary-color);
+  position: relative;
 }
 
 .nav-link:hover,
 .nav-link:focus {
   color: var(--primary-color);
+}
+
+.nav-link:hover::after,
+.nav-link:focus::after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 4px;
+
+  display: block;
+  bottom: 0;
+  left: 0;
+
+  background: #2196f3;
+  border-radius: 2px;
 }
 
 .contact-list {
