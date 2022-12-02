@@ -76,6 +76,7 @@ img {
   display: flex;
   align-items: center;
   gap: 93px;
+  height: 80px;
 }
 
 .logo {
@@ -85,7 +86,6 @@ img {
   font-weight: 700;
   font-size: 26px;
   line-height: 1.19;
-  padding: 25px;
 
   letter-spacing: 0.03em;
 }
@@ -94,8 +94,15 @@ img {
   color: var(--dark-color);
 }
 
+.nav,
+.nav-list,
+.nav-list-item,
+.nav-link {
+  height: 100%;
+}
+
 .nav-list-item {
-  display: inline;
+  display: inline-block;
 }
 
 .nav-list-item:not(:last-child) {
@@ -103,12 +110,15 @@ img {
 }
 
 .nav-link {
+  display: flex;
+  align-items: center;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.02em;
   color: var(--secondary-color);
   position: relative;
+  transition: color 300ms linear;
 }
 
 .nav-link:hover,
@@ -116,19 +126,23 @@ img {
   color: var(--primary-color);
 }
 
-.nav-link:hover::after,
-.nav-link:focus::after {
+.nav-link::after {
   position: absolute;
   content: '';
   width: 100%;
   height: 4px;
 
-  display: block;
-  bottom: 0;
+  bottom: -1px;
   left: 0;
 
-  background: #2196f3;
+  background-color: transparent;
   border-radius: 2px;
+  transition: background-color 300ms linear;
+}
+
+.nav-link:hover::after,
+.nav-link:focus::after {
+  background-color: #2196f3;
 }
 
 .contact-list {
@@ -146,6 +160,7 @@ img {
   line-height: 1.14;
   letter-spacing: 0.02em;
   color: #757575;
+  transition: color 300ms linear;
 }
 
 .header .contact-link {
@@ -157,6 +172,7 @@ img {
 .contact-icon {
   margin-right: 10px;
   fill: #757575;
+  transition: fill 300ms linear;
 }
 
 .contact-link:hover,
@@ -208,7 +224,7 @@ img {
   display: block;
   margin: 0 auto;
   padding: 10px 32px;
-  background: var(--primary-color);
+  background-color: var(--primary-color);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   border: 0;
@@ -223,6 +239,7 @@ img {
 
   color: var(--light-color);
   cursor: pointer;
+  transition: background-color 300ms linear;
 }
 
 .hero-btn:hover,
@@ -296,6 +313,33 @@ img {
   gap: 30px;
 }
 
+.about-us-item {
+  position: relative;
+}
+
+.about-us-item-panel {
+  position: absolute;
+  bottom: 0;
+  width: 370px;
+  height: 70px;
+  left: 0;
+  padding: 27px;
+  align-items: center;
+
+  background: rgba(47, 48, 58, 0.8);
+}
+
+.about-us-item-title {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.4px;
+  text-align: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+
+  color: #ffffff;
+}
+
 /*-----------SOCIALS-----------*/
 
 .soc-list {
@@ -317,6 +361,11 @@ img {
   width: 100%;
   height: 100%;
   border-radius: 50%;
+  transition: color 300ms linear, background-color 300ms linear;
+}
+
+.soc-icon {
+  transition: fill 300ms linear;
 }
 
 /*-----------TEAM------------*/
@@ -435,10 +484,12 @@ img {
   background: #ffffff;
   border: 1px solid var(--grey-color);
   border-radius: 4px;
+  transition: border-color 300ms linear;
 }
 
 .clients-logo {
   fill: var(--grey-color);
+  transition: fill 300ms linear;
 }
 
 .clients-link:hover,
@@ -546,6 +597,8 @@ img {
   text-align: center;
   letter-spacing: 0.03em;
   cursor: pointer;
+  transition: color 300ms linear, background-color 300ms linear,
+    box-shadow 300ms linear;
 }
 
 .tab-btn:hover,
@@ -560,16 +613,49 @@ img {
 .portfolio-projects-list {
   display: flex;
   justify-content: center;
+  align-items: flex-start;
   flex-wrap: wrap;
   gap: 30px;
 }
 
 /*-----------PROJECT-CARD-----------*/
 
+.project-card {
+  position: relative;
+  background-color: var(--light-color);
+  transition: box-shadow 300ms linear;
+}
+
 .project-card:hover {
-  background: var(--light-color);
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12),
     0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
+}
+
+.project-card:hover .project-cover-text {
+  transform: translateY(0);
+}
+
+.project-thumb {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-cover-text {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  align-items: center;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+  color: #ffffff;
+  background-color: rgba(33, 150, 243, 0.9);
+  padding: 24px;
+  height: 100%;
+  transform: translateY(100%);
+  transition: transform 300ms linear;
 }
 
 .project-info {
